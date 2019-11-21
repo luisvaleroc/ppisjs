@@ -1,0 +1,57 @@
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element"> {{element.fecha}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="papelArchivo">
+            <th mat-header-cell *matHeaderCellDef> Papel Archivo </th>
+            <td mat-cell *matCellDef="let element"> {{element.papelArchivo}} </td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="carton">
+            <th mat-header-cell *matHeaderCellDef> Carton </th>
+            <td mat-cell *matCellDef="let element"> {{element.carton}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="plastico">
+            <th mat-header-cell *matHeaderCellDef> Plastico </th>
+            <td mat-cell *matCellDef="let element"> {{element.plastico}} </td>
+        </ng-container>
+        <ng-container matColumnDef="pvc">
+            <th mat-header-cell *matHeaderCellDef> PVC </th>
+            <td mat-cell *matCellDef="let element"> {{element.pvc}} </td>
+        </ng-container>
+        <ng-container matColumnDef="chatarra">
+            <th mat-header-cell *matHeaderCellDef> Chatarra </th>
+            <td mat-cell *matCellDef="let element"> {{element.chatarra}} </td>
+        </ng-container>
+        <ng-container matColumnDef="vidrio">
+            <th mat-header-cell *matHeaderCellDef> Vidrio </th>
+            <td mat-cell *matCellDef="let element"> {{element.vidrio}} </td>
+        </ng-container>
+        <ng-container matColumnDef="organicos">
+            <th mat-header-cell *matHeaderCellDef> Organicos </th>
+            <td mat-cell *matCellDef="let element"> {{element.organicos}} </td>
+        </ng-container>
+        <ng-container matColumnDef="ordinarios">
+            <th mat-header-cell *matHeaderCellDef> ordinarios </th>
+            <td mat-cell *matCellDef="let element"> {{element.ordinarios}} </td>
+        </ng-container>
+        <ng-container matColumnDef="totalDia">
+            <th mat-header-cell *matHeaderCellDef> Total Dia </th>
+            <td mat-cell *matCellDef="let element"> {{element.totalDia}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

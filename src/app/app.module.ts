@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ResiduosComponent } from './components/residuos/residuos.component';
@@ -46,11 +46,13 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
+import { BrandsComponent } from './components/brands/brands.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ResiduosComponent
+    ResiduosComponent,
+    BrandsComponent
   ],
   imports: [
     BrowserModule,
@@ -97,7 +99,8 @@ import {MatTreeModule} from '@angular/material/tree';
     MatTooltipModule,
     MatTreeModule,
     PortalModule,
-    ScrollingModule
+    ScrollingModule,
+    HttpClientModule
   ],
   exports: [A11yModule,
     CdkStepperModule,

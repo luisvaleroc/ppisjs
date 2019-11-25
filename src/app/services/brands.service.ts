@@ -10,7 +10,7 @@ export class BrandsService {
   constructor(private http: HttpClient) { }
 
   showBrand(): Observable<any> {
-    return this.http.get('https://pokeapi.co/api/v2/pokemon-form/132/');
+    return this.http.get('https://pokeapi.co/api/v2/pokemon');
 
   }
 }

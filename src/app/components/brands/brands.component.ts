@@ -11,26 +11,26 @@ import { BrandsService } from '../../services/brands.service';
 })
 export class BrandsComponent implements OnInit {
 
-  displayedColumns: string[] = ['name'] ;
+  displayedColumns: string[] = ['name','apellido'] ;
   dataSource: any;
 
   brand: any;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-
+  
   
   ngOnInit() {
-    this.muestra();  }
-
+    this.muestra();  
+  }
   constructor(private brandsService: BrandsService){ 
     
-    
+   
 
   }
   muestra(){
     this.brandsService.showBrand().subscribe( res => {
       this.dataSource = new MatTableDataSource();
-      this.dataSource.data = res.name;
+      this.dataSource.data = res.results;
       this.dataSource.paginator = this.paginator;
       console.log(this.dataSource.data);
       
@@ -43,7 +43,8 @@ export class BrandsComponent implements OnInit {
 export interface PeriodicElement {
 
   name: string;
- 
+ apellido: string;
+ edad: number;
   
   
 }

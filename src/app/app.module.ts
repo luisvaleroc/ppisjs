@@ -47,12 +47,16 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import { BrandsComponent } from './components/brands/brands.component';
+import { MenuComponent } from './components/menu/menu.component';
+import { StoresComponent } from './components/stores/stores.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ResiduosComponent,
-    BrandsComponent
+    BrandsComponent,
+    MenuComponent,
+    StoresComponent
   ],
   imports: [
     BrowserModule,

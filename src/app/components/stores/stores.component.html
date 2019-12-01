@@ -1,22 +1,38 @@
+<mat-card>Nombre Empresa</mat-card>
 <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
 
-        <!-- Position Column -->
+         
 
-
-        <!-- Name Column -->
-
+  
         <ng-container matColumnDef="id">
             <th mat-header-cell *matHeaderCellDef> ID </th>
             <td mat-cell *matCellDef="let element"> {{element.id}} </td>
         </ng-container>
+       
+       
         <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef> Nombre </th>
             <td mat-cell *matCellDef="let element"> {{element.name}} </td>
         </ng-container>
-       
-        
-
+        <ng-container matColumnDef="adress">
+            <th mat-header-cell *matHeaderCellDef> Direccion </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+         
+        <ng-container matColumnDef="acciones">
+                <th mat-header-cell *matHeaderCellDef> Acciones
+                    <button mat-stroked-button (click)="agrega()" color="accent" >agregar <mat-icon>add</mat-icon></button>
+                </th>
+                <td mat-cell *matCellDef="let element"> <button mat-stroked-button (click)="agrega()" color="succes" > <mat-icon>remove_red_eye</mat-icon></button>
+                    <button mat-stroked-button (click)="agrega()" color="succes" > <mat-icon>edit</mat-icon></button>
+                    <button mat-stroked-button (click)="elimina(element.id)" color="succes" > <mat-icon>delete</mat-icon></button>
+                </td>
+                
+                 
+                
+                
+            </ng-container>
 
 
 

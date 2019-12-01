@@ -1,0 +1,13 @@
+<div class="container">
+        
+        <mat-form-field>
+            <input matInput placeholder="Nombre" name="name" [(ngModel)]='this.storesService.store.name'>
+        </mat-form-field>
+    
+        <mat-form-field>
+            <input matInput placeholder="Direccion" name="address" [(ngModel)]='this.storesService.store.address'>
+        </mat-form-field>
+    
+        
+        <button mat-stroked-button color="accent" (click)="onSaveFormulario()">Guardar<mat-icon>save</mat-icon></button>
+    </div>

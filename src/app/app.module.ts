@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule,  HTTP_INTERCEPTORS} from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ResiduosComponent } from './components/residuos/residuos.component';
@@ -49,14 +49,22 @@ import {MatTreeModule} from '@angular/material/tree';
 import { BrandsComponent } from './components/brands/brands.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { StoresComponent } from './components/stores/stores.component';
-
+import { ModalComponent } from './components/modal/modal.component';
+import { SigninComponent } from './components/signin/signin.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { FormsModule } from '@angular/forms'
+import {AuthGuard} from '../app/auth.guard';
+import { TokenInterceptorService } from './services/token-interceptor.service';
 @NgModule({
   declarations: [
     AppComponent,
     ResiduosComponent,
     BrandsComponent,
     MenuComponent,
-    StoresComponent
+    StoresComponent,
+    ModalComponent,
+    SigninComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +112,10 @@ import { StoresComponent } from './components/stores/stores.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    
+    
   ],
   exports: [A11yModule,
     CdkStepperModule,
@@ -148,7 +159,13 @@ import { StoresComponent } from './components/stores/stores.component';
     MatTreeModule,
     PortalModule,
     ScrollingModule],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [StoresComponent,AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
+  bootstrap: [AppComponent],
+  entryComponents: [ModalComponent]
 })
 export class AppModule { }

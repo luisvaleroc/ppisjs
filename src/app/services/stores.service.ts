@@ -6,6 +6,7 @@ import {Observable} from 'rxjs';
 })
 export class StoresService {
   public store = {
+    id: null,
     name: '',
     address: '',
     brand_id: 1
@@ -16,20 +17,27 @@ export class StoresService {
   constructor(private http: HttpClient) { }
 
   showStores(): Observable<any> {
-    return this.http.get('http://127.0.0.1:8000/api/stores');
+    return this.http.get('http://18.189.2.155/api/stores');
 
   }
 
   agregaStore(store) {
     let json = JSON.stringify(store);
     let headers = new HttpHeaders().set('Content-Type','application/json');
-    return this.http.post('http://127.0.0.1:8000/api/stores', json, {headers: headers});
+    return this.http.post('http://18.189.2.155/api/stores', json, {headers: headers});
 
   }
 
   eliminaStore(id): Observable<any> {
-   return this.http.delete('http://127.0.0.1:8000/api/stores/'+id);
+   return this.http.delete('http://18.189.2.155/api/stores/'+id);
   }
 
+  editaStore(store){
+    let json = JSON.stringify(store);
+    let headers = new HttpHeaders().set('Content-Type','application/json');
+    return this.http.put('http://18.189.2.155/api/stores/'+store.id, json, {headers: headers});
+    
+
+  }
   
 }

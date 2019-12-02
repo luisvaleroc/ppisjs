@@ -1,42 +1,62 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { StoresService } from 'src/app/services/stores.service';
 import { ModalComponent } from "../modal/modal.component";
 import { log } from 'util';
+import { MatSort } from '@angular/material/sort';
 
 @Component({
   selector: 'app-stores',
   templateUrl: './stores.component.html',
   styleUrls: ['./stores.component.css']
 })
-export class StoresComponent implements OnInit {
+export class StoresComponent implements OnInit, AfterViewInit {
 
   
   displayedColumns: string[] = ['id','name','adress','acciones'] ;
-  dataSource: any;
+  dataSource = new MatTableDataSource();;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+ 
 
   constructor(public storesService: StoresService, public dialog: MatDialog) { }
+  
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 
   ngOnInit() {
     this.muestra();
   }
+  ngAfterViewInit() {
+
+    this.dataSource.sort = this.sort;
+
+ }
 
   muestra(){
     this.storesService.showStores().subscribe( res => {
       this.dataSource = new MatTableDataSource();
       this.dataSource.data = res.store;
       this.dataSource.paginator = this.paginator;
-      console.log(res.id);
+      console.log(res);
       
       console.log(this.dataSource.data);
       
       
     }, error => { console.log(JSON.stringify(error));
      } );
+  }
+
+  onEdit(element) {
+    this.cleanForm();
+    this.abreModal();
+    if (element) {
+      this.storesService.store = element;
+    }
   }
   
   agrega(){

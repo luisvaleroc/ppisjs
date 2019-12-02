@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-  private URL = 'http://localhost:8000/api';
+  private URL = 'http://18.189.2.155/api';
   constructor(private http: HttpClient, private router: Router) { }
 
   signUpUser(user) {
